@@ -1,7 +1,5 @@
 #include <fstream>
-#include <iostream>
 #include <algorithm>
-#include <chrono> 
 using namespace std;
 using namespace std::chrono;
 typedef long long block;
@@ -19,20 +17,7 @@ public:
 	string encrypt(string, string);
 	string decrypt(string, string);
 };
-int main()
-{
-	DES E;
-	string key = "133457799BBCDFF1", plaintext = "0123456789ABCDEF", ciphertext;
-	auto start = high_resolution_clock::now(); 
-	ciphertext = E.encrypt(plaintext, key);
-	//cout<<ciphertext<<'\n';
-	plaintext = E.decrypt(ciphertext, key);
-	//cout<<plaintext<<'\n';
-	auto stop = high_resolution_clock::now();
-	auto duration = duration_cast<microseconds>(stop - start); 
-	cout<<duration.count()<<'\n'; 
-	return 0;
-}
+
 DES::DES()
 {
 	// Ready up hex2int, int2hex which is used to convert string input to binary and reverse
@@ -190,7 +175,6 @@ void DES::genKey(string key)
 		}
 		k[i] = permute(cidi, pc2, 48, 56);
 	}
-	//cout<<"k["<<16<<"] = "<<bitset<48>(k[16])<<'\n';
 }
 block DES::f(block r, block k)
 {
