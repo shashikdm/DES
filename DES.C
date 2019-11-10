@@ -1,7 +1,6 @@
 #include <fstream>
 #include <algorithm>
 using namespace std;
-using namespace std::chrono;
 typedef long long block;
 class DES
 {
